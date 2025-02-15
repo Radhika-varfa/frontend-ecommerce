@@ -99,7 +99,7 @@ function ShoppingListing() {
           //   title: `Only ${getQuantity} quantity can be added for this item`,
           //   variant: "destructive",
           // });
-          toast.error(data?.payload.message || `Only ${getQuantity} quantity can be added for this item`);
+          toast.error( `Only ${getQuantity} quantity can be added for this item`);
 
           return;
         }
