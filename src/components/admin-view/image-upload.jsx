@@ -6,6 +6,10 @@ import { Button } from "../ui/button";
 import axios from "axios";
 import { Skeleton } from "../ui/skeleton";
 
+// const API_ENDPOINT = process.env.VITE_API_ENDPOINT;
+const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;  
+
+
 function ProductImageUpload({
   imageFile,
   setImageFile,
@@ -50,7 +54,7 @@ function ProductImageUpload({
     const data = new FormData();
     data.append("my_file", imageFile);
     const response = await axios.post(
-      "http://localhost:5000/api/admin/products/upload-image",
+      (`${API_ENDPOINT}/api/admin/products/upload-image`),
       data
     );
     console.log(response, "response");

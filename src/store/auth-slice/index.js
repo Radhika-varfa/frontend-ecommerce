@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// const API_ENDPOINT = process.env.VITE_API_ENDPOINT;
+const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;  
+console.log("API Endpoint:", API_ENDPOINT); 
+console.log(import.meta.env); 
+
+
 const initialState = {
   isAuthenticated: false,
   isLoading: true,
@@ -12,7 +18,7 @@ export const registerUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/register",
+      (`${API_ENDPOINT}/api/auth/register`),
       formData,
       {
         withCredentials: true,
@@ -28,7 +34,7 @@ export const loginUser = createAsyncThunk(
 
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/login",
+     (`${API_ENDPOINT}/api/auth/login`),
       formData,
       {
         withCredentials: true,
@@ -44,7 +50,7 @@ export const logoutUser = createAsyncThunk(
 
   async () => {
     const response = await axios.post(
-      "http://localhost:5000/api/auth/logout",
+      (`${API_ENDPOINT}/api/auth/logout`),
       {},
       {
         withCredentials: true,
@@ -60,7 +66,7 @@ export const checkAuth = createAsyncThunk(
 
   async () => {
     const response = await axios.get(
-      "http://localhost:5000/api/auth/check-auth",
+      (`${API_ENDPOINT}/api/auth/check-auth`),
       {
         withCredentials: true,
         headers: {

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AuthLayout from "./components/auth/layout";
 import AuthRegister from "./pages/auth/register";
 import AuthLogin from "./pages/auth/login";
@@ -40,6 +40,7 @@ function App() {
         <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         {/* Auth Routes (No Protection) */}
+        <Route path="/" element={<Navigate to="/auth/login" replace />} />
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<AuthLogin />} />
           <Route path="register" element={<AuthRegister />} />
